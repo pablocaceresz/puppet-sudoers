@@ -20,6 +20,16 @@ As a git submodule:
 The following puppet declaration:
 
 ```puppet
+
+group { "acme":
+      ensure => present,
+      gid => 501,
+}->
+user { 'acme':
+  name                 =>'acme',
+  ensure => present,
+  gid => 501,
+}->
 sudoers::allowed_command{ "acme":
   command          => "/usr/sbin/service",
   user             => "acme",
